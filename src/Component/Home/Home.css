@@ -1,0 +1,8 @@
+.profileImg {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+}
+p.react-reveal.display-6.h5 {
+    font-size: 26px;
+}
