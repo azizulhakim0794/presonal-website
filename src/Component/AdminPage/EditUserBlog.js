@@ -7,14 +7,14 @@ import { DateContext } from '../../App';
 const EditUserBlog = () => {
     const [userBlog, setUserBlog] = useState({});
     const [date,setDate] = useContext(DateContext)
-    const { id } = useParams();
-
+    const { _id } = useParams();
+// console.log(_id)
     useEffect(() => {
-        axios.get('/blogs/'+id)
+        axios.get('/blogs/'+_id)
     .then(res=>{
         setUserBlog(res.data)
     })
-    }, [id]);
+    }, [_id]);
     // console.log(userBlog)
     // Update User
     const handleTitleChange = e => {
@@ -29,7 +29,7 @@ const EditUserBlog = () => {
         setUserBlog(updatedUser);
     }
     const handleUpdateUser = e => {
-        axios.put('/blogs/delete/'+id,userBlog)
+        axios.put('/blogs/delete/'+_id,userBlog)
             .then(res => {
                 if ( res.data.modifiedCount > 0) {
                     alert('Update Successful');
@@ -45,7 +45,7 @@ const EditUserBlog = () => {
         <NavBar/>
         <div className="container">
         <h2 className="text-center">Update: {userBlog.title}</h2>
-        <p><small>{id}</small></p>
+        <p><small>{_id}</small></p>
         <form onSubmit={handleUpdateUser}>
             <input className="form-control mb-2" type="text" onChange={handleTitleChange} value={userBlog.title || ''} />
             <textarea type="text" className="form-control mb-3" onChange={handleBlogChange} value={userBlog.blog || ''} />

@@ -52,9 +52,6 @@ function App() {
           <Route path="/blog" element={<Blog blogs={blogs} />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/adminPage" element={<AdminPage blogs={blogs} />} />
-          <Route path="/adminPage/:id" element={<EditUserBlog />} /> */}
-
           <Route element={<PrivateRoute />} >
             <Route path="/adminPage" element={<AdminPage  blogs={blogs}/>} />
             <Route path="/adminPage/:id" element={<EditUserBlog />} />
