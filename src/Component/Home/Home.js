@@ -24,10 +24,9 @@ const Home = () => {
 
         </div>
         <div className="col-md-6">
-          <Flip bottom cascade>
-            <Bounce bottom cascade>
-              <h2 className="">AZIZUL HAKIM TAMZID</h2>
-            </Bounce>
+          <Flip bottom>
+              <h2 className=""><Bounce bottom cascade>AZIZUL HAKIM TAMZID</Bounce></h2>
+            
             <p className="display-6 h5">Frontend Developer(ReactJs)</p>
             <p className="">8+ MERN Stack Projects</p>
             <div className="h5 mt-2"><span className="badge bg-secondary me-1">JavaScript</span>  <span className="badge bg-secondary me-1">React Js</span> <span className="badge bg-secondary me-1">MongoDB</span> <span className="badge bg-secondary me-1">NodeJs</span></div>

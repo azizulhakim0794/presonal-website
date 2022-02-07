@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import NavBar from '../CommonComponent/NavBar/NavBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -6,43 +6,24 @@ import Flip from 'react-reveal/Flip';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../App';
 import Footer from '../CommonComponent/Footer/Footer';
-import Loading from '../CommonComponent/Loading/Loading';
-const Blog = () => {
+const Blog = ({blogs}) => {
   const [loggedInUser] = useContext(UserContext)
-  const [loading ,setLoading] = useState(true)
-  const [blogs,setBlog] = useState([])
   const navigate = useNavigate()
   const handleGoToLogin = () => {
     if (loggedInUser) navigate('/adminPage')
     else navigate('/login')
   }
 
-  useEffect(() => {
-    const getPosts = async () => {
-      setLoading(true)
-      const res = await fetch(
-        `https://jsonplaceholder.typicode.com/posts`
-      );
-      const data = await res.json();
-      // const total = res.headers;
-      // console.log(total)
-      setBlog(data);
-      setLoading(false)
-    };
-    // .get("x-total-count")
-    getPosts();
-  }, [blogs]);
 
-
-   const BlogContent = blogs.map((data)=>{
-     const {title,body,id} = data
+   const BlogContent = blogs.map((data , index)=>{
+     const {title,blog,_id } = data
      return(
-      <div key={title} className="blog-content p-5 border m-2">
+      <div key={_id} className="blog-content p-5 border m-2">
           {/* <div className="">
             <button className="details-btn "> <FontAwesomeIcon icon={faEllipsisV} /> </button>
           </div> */}
-          <h3 className="">{id}. {title}</h3>
-          <p className="">{body}</p>
+          <h3 className="">{index+1}. {title}</h3>
+          <p className="">{blog}</p>
         </div>
      )
    }) 
@@ -61,8 +42,8 @@ const Blog = () => {
           <button className="addBlogBtn" data-bs-toggle="modal" data-bs-target={loggedInUser ? "#createBlogModal" : "#exampleModal"}> <FontAwesomeIcon icon={faPlus} /></button>
         </div>
         <br />
-        { loading ?
-          BlogContent: <Loading/>
+        { 
+          BlogContent
         }
       </div>
     </div>

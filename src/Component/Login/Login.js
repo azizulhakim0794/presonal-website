@@ -7,15 +7,11 @@ const Login = () => {
   const [adminEmail, setAdminEmail] = useState([])
   const navigate = useNavigate()
   const handleLogin = () => {
-    setLoggedInUser(true)
+    // setLoggedInUser(true)
     navigate("/adminPage", {
       replace:true
     })
   }
-  console.log(loggedInUser)
-
-
- 
   const handleBlur = (e) => {
     const userInfo = { ...adminEmail }
     userInfo[e.target.name] = e.target.value
