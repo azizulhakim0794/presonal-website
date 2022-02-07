@@ -17,17 +17,16 @@ const Login = () => {
     userInfo[e.target.name] = e.target.value
     setAdminEmail(userInfo)
   }
-  const handleAdminCheck = async (e) => {
+  const handleAdminCheck =  (e) => {
     e.preventDefault();
    if(adminEmail.email === "programmer@gmail.com" && adminEmail.password === "programmer#3"){
-    await  setLoggedInUser(true)
+      setLoggedInUser(true)
       handleLogin()
     }
      if(adminEmail.email !== "programmer@gmail.com" && adminEmail.password !== "programmer#3"){
       alert('Please Enter the right email and password')
     }
-    // e.target.reset()
-    console.log(adminEmail)
+    e.target.reset()
   }
   return <div className="container">
     <br />

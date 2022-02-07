@@ -37,9 +37,8 @@ const AdminPage = ({ blogs }) => {
     })
    
   }
-
   //  all Blogs Content
-  const allBlogs = blogs.map((data, index) => {
+ const allBlogs = blogs ? blogs.map((data, index) => {
     const { title, blog, _id } = data
     return (
       <div id={`blog${_id}`} key={_id} className="blog-content p-5 border m-2">
@@ -50,7 +49,7 @@ const AdminPage = ({ blogs }) => {
         </div>
       </div>
     )
-  })
+  })  : ""
 
   // all Blogs Content finish
 
